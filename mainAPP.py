@@ -12,7 +12,7 @@ Projeto de software - Tecnicas de programacao II
     - Rodrigo Oliveira - rodrigopantoja17@yahoo.com - 2018004710
     - Rômulo Sá - romulo.sa153@live.com - 2018001674
     - Victor Manuel - victor.vsantos08@gmail.com - 2018005118
-    - Willian Lucas - willamlucas@gmail.com - 2018001709
+    - Willam Lucas - willamlucas@gmail.com - 2018001709
 
 
 4 -Modulos que compoe o software: descrever a funçao de cada arquivo adicional que compoe o software
