@@ -160,9 +160,7 @@ while True:
             emprestimo = mod.buscar_nome(valores['lista'][0])
             novos_dados = tela.tela_atualizacao(emprestimo)
             atualizacao = mod.editar_emprestimo(valores['lista'][0], novos_dados)
-            sg.Popup("Atulizado com sucesso", button_color=('white', 'springgreen4'))
             NOMES = mod.get_informacoes()
-            janela.FindElement('Edit').Update(visible=False)
             janela.FindElement('lista').Update(NOMES)
         except IndexError:
             pass

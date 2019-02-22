@@ -4,5 +4,7 @@
   "test_modules.py::test_buscar_nome",
   "test_modules.py::test_gravar_dados",
   "test_modules.py::test_ler_dados",
-  "test_modules.py::test_exluir_emprestimo"
+  "test_modules.py::test_exluir_emprestimo",
+  "test_modules.py::test_editar_emprestimo",
+  "test_modules.py::test_get_informacoes"
 ]
