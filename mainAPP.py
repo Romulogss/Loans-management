@@ -48,7 +48,7 @@ coluna_nomes = [[sg.Button('Buscar', size=(8,1), pad=(25,1), button_color=('whit
 tela_principal = [[sg.Frame("Loans-Management", coluna_detalhes), sg.Column(coluna_nomes, size=(130,100))],                  
                   [sg.Column(coluna_btt, key='Edit', visible=False)],
                   [sg.Column(coluna_bt1, key='Apag', visible=True)]]
-janela = sg.Window("Loans-Management", size=(600, 350), icon=('/Icon/icon-logo.ico'), text_justification=('center')).Layout(tela_principal)
+janela = sg.Window("Loans-Management", size=(600, 350), icon=('C:\\Users\\BPMLAB-01\\Desktop\\Loans-management\\Icon\\icon-logo.ico'), text_justification=('center')).Layout(tela_principal)
 while True:
     evento, valores = janela.Read()
     if evento == 'lista':
