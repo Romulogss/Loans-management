@@ -23,7 +23,7 @@ def tela_cadastro():
                 [sg.Button("Cadastrar",button_color=('white', 'springgreen4')),
                  sg.Cancel(button_text="Cancelar",button_color=('white', 'firebrick3'))]
                 ]
-    janela = sg.Window("Cadastro", disable_close=True).Layout(layout)
+    janela = sg.Window("Cadastro", disable_close=True, icon=('C:\\Users\\BPMLAB-01\\Desktop\\Loans-management\\Icon\\icon-logo.ico')).Layout(layout)
     botao, valores = janela.Read()
     if botao == "Cadastrar":
         janela.Close()
@@ -71,7 +71,7 @@ def tela_escolha_busca():
                      sg.Button("Ano", button_color=('white', 'springgreen4'), size=(8, 1)),
                      sg.Button("Mes + Ano", button_color=('white', 'springgreen4'), size=(10, 1))],
                     [sg.Button("Cancelar", button_color=('white', 'firebrick3'), size=(8, 1), pad=(150, 0))]]
-    janela_busca = sg.Window("Buscas", size=(400, 100), text_justification=('center')).Layout(layout_busca)
+    janela_busca = sg.Window("Buscas", size=(400, 100), text_justification=('center'), icon=('C:\\Users\\BPMLAB-01\\Desktop\\Loans-management\\Icon\\icon-logo.ico')).Layout(layout_busca)
     botao_busca, valores_busca = janela_busca.Read()
     janela_busca.Close()
     return botao_busca
@@ -86,21 +86,21 @@ def tela_busca(botao):
     if botao == 'Nome':
         layout_nome = [[sg.T("Qual nome deseja buscar?", size=(30,1))],
                        [sg.In(size=(30,1)), sg.Button("Buscar")]]
-        janela_nome = sg.Window("Busca Nome", size=(370,100)).Layout(layout_nome)
+        janela_nome = sg.Window("Busca Nome", size=(370,100), icon=('C:\\Users\\BPMLAB-01\\Desktop\\Loans-management\\Icon\\icon-logo.ico')).Layout(layout_nome)
         buscar, nome = janela_nome.Read()
         janela_nome.Close()
         return nome[0]
     if botao == 'Item':
         layout_item = [[sg.T("Qual item deseja buscar?", size=(30,1))],
                        [sg.In(size=(30,1)), sg.Button("Buscar")]]
-        janela_item = sg.Window("Busca Item", size=(370,100)).Layout(layout_item)
+        janela_item = sg.Window("Busca Item", size=(370,100), icon=('C:\\Users\\BPMLAB-01\\Desktop\\Loans-management\\Icon\\icon-logo.ico')).Layout(layout_item)
         buscar, item = janela_item.Read()
         janela_item.Close()
         return item[0]
     if botao == 'Ano':
         layout_mes = [[sg.T("Qual ano deseja buscar?", size=(30,1))],
                        [sg.In(size=(30, 1)), sg.Button("Buscar")]]
-        janela_mes = sg.Window("Busca Ano", size=(370, 100)).Layout(layout_mes)
+        janela_mes = sg.Window("Busca Ano", size=(370, 100), icon=('C:\\Users\\BPMLAB-01\\Desktop\\Loans-management\\Icon\\icon-logo.ico')).Layout(layout_mes)
         buscar, mes = janela_mes.Read()
         try:
             mes = datetime.strptime(mes[0], '%Y').date().year
@@ -112,7 +112,7 @@ def tela_busca(botao):
     if botao == 'Mes + Ano':
         layout_mes_ano = [[sg.T("Qual mes e ano deseja buscar?", size=(30,1))],
                        [sg.In("Ex: 10/2018", size=(30, 1)), sg.Button("Buscar")]]
-        janela_mes_ano = sg.Window("Busca Mes", size=(370, 100)).Layout(layout_mes_ano)
+        janela_mes_ano = sg.Window("Busca Mes", size=(370, 100), icon=('C:\\Users\\BPMLAB-01\\Desktop\\Loans-management\\Icon\\icon-logo.ico')).Layout(layout_mes_ano)
         buscar, mes_ano = janela_mes_ano.Read()
         try:
             mes_ano = datetime.strptime(mes_ano[0], '%m/%Y').date()
@@ -132,7 +132,7 @@ def tela_excluir():
     layout = [[sg.Text('Tem certeza que deseja excluir?')],
               [sg.Button("Sim", size=(8,1), button_color=('white', 'springgreen4'), pad=(20,1)),
                sg.Button("Não", size=(8,1), button_color=('white', 'firebrick3'))]]
-    janela = sg.Window('Excluir').Layout(layout)
+    janela = sg.Window('Excluir', icon=('C:\\Users\\BPMLAB-01\\Desktop\\Loans-management\\Icon\\icon-logo.ico')).Layout(layout)
     botao, evento = janela.Read()
     if botao == 'Sim':
         janela.Close()
