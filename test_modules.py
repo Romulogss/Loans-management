@@ -1,4 +1,4 @@
-from Modules import *
+from modules import *
 
 
 def test_cadastro():
