@@ -13,11 +13,11 @@ Autor: Rômulo Gabriel Sousa Sá
 '''
 
 #aqui começa o software ...
-from Telas.telas import tela_busca, tela_cadastro, tela_atualizacao, tela_escolha_busca, tela_excluir
-import modules as mod
+from telas import tela_busca, tela_cadastro, tela_atualizacao, tela_escolha_busca, tela_excluir
+from modules import get_informacoes, editar_emprestimo, buscar_nome, cadastrar, exlcuir_emprestimo
 from PySimpleGUI import Text, InputText, Button, Column, Frame, Listbox, Window, Popup, PopupNoButtons
 
-NOMES = mod.get_informacoes()
+NOMES = get_informacoes()
 coluna_detalhes = [[Text('', key='nome', size=(30, 1), pad=(1,5))],
                    [Text('', key='telefone', size=(30, 1), pad=(1,8))],
                    [Text('', key='celular', size=(30, 1), pad=(1,8))],
@@ -44,7 +44,7 @@ while True:
     if evento == 'lista':
         try:
             nome = valores['lista'][0]
-            emprestimo = mod.buscar_nome(nome)
+            emprestimo = buscar_nome(nome)
             nome = "Nome: " + emprestimo['nome']
             telefone = "Telefone: " + emprestimo['telefone']
             celular = "Celular: " + emprestimo['celular']
@@ -77,7 +77,7 @@ while True:
             if botao_busca == "Nome":
                 nome_busca = tela_busca(botao_busca)
                 if len(nome_busca) != 0:
-                    NOMES = mod.get_informacoes(nome=nome_busca)
+                    NOMES = get_informacoes(nome=nome_busca)
                     if len(NOMES) != 0:
                         txt_busca = "Buscando por " + nome_busca
                         janela.FindElement('buscas').Update(txt_busca)
@@ -88,7 +88,7 @@ while True:
             elif botao_busca == 'Item':
                 item_busca = tela_busca(botao_busca)
                 if len(item_busca) != 0:
-                    NOMES = mod.get_informacoes(item=item_busca)
+                    NOMES = get_informacoes(item=item_busca)
                     if len(NOMES) != 0:
                         txt_busca = "Buscando pelo item " + item_busca
                         janela.FindElement('buscas').Update(txt_busca)
@@ -99,7 +99,7 @@ while True:
             elif botao_busca == 'Ano':
                 ano_busca = tela_busca(botao_busca)
                 if type(ano_busca) != str:
-                    NOMES = mod.get_informacoes(ano=ano_busca)
+                    NOMES = get_informacoes(ano=ano_busca)
                     if len(NOMES) != 0:
                         txt_busca = "Buscando pelo ano " + str(ano_busca)
                         janela.FindElement('buscas').Update(txt_busca)
@@ -112,7 +112,7 @@ while True:
                 if type(ano_mes_busca) != str:
                     mes = ano_mes_busca.month
                     ano = ano_mes_busca.year
-                    NOMES = mod.get_informacoes(ano = ano, mes= mes)
+                    NOMES = get_informacoes(ano = ano, mes= mes)
                     if len(NOMES) != 0:
                         txt_busca = "Buscando pelo mes " + str(mes) + " e ano " + str(ano)
                         janela.FindElement('buscas').Update(txt_busca)
@@ -125,7 +125,7 @@ while True:
             janela.FindElement('botao_busca').Update(visible=False)
             pass
     elif evento == 'botao_busca':
-        NOMES = mod.get_informacoes()
+        NOMES = get_informacoes()
         janela.FindElement('buscas').Update('')
         janela.FindElement('botao_busca').Update(visible=False)
         janela.FindElement('lista').Update(NOMES)
@@ -141,16 +141,16 @@ while True:
     elif evento == 'Cadastrar':
         cadastro = tela_cadastro()
         if type(cadastro) == list:
-            mod.cadastrar(cadastro)
-            NOMES = mod.get_informacoes()
+            cadastrar(cadastro)
+            NOMES = get_informacoes()
             janela.FindElement('lista').Update(NOMES)
 
     elif evento == 'Editar':
         try:
-            emprestimo = mod.buscar_nome(valores['lista'][0])
+            emprestimo = buscar_nome(valores['lista'][0])
             novos_dados = tela_atualizacao(emprestimo)
-            atualizacao = mod.editar_emprestimo(valores['lista'][0], novos_dados)
-            NOMES = mod.get_informacoes()
+            atualizacao = editar_emprestimo(valores['lista'][0], novos_dados)
+            NOMES = get_informacoes()
             janela.FindElement('lista').Update(NOMES)
         except IndexError:
             pass
@@ -158,8 +158,8 @@ while True:
         try:
             confirmar = tela_excluir()
             if confirmar:
-                mod.exlcuir_emprestimo(valores['lista'][0])
-                NOMES = mod.get_informacoes()
+                exlcuir_emprestimo(valores['lista'][0])
+                NOMES = get_informacoes()
                 janela.FindElement('Edit').Update(visible=False)
                 janela.FindElement('lista').Update(NOMES)
                 janela.FindElement('nome').Update('')

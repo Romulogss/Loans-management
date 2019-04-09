@@ -3,7 +3,7 @@ from PySimpleGUI import Text, InputText,Button,Cancel,Window, Popup, T, In
 from datetime import datetime
 
 """
-Módulo contento as telas adicionais do programa.
+Módulo contendo as telas adicionais do programa.
 """
 
 def tela_cadastro():

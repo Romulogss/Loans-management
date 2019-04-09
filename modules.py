@@ -2,7 +2,7 @@
 Módulo contendo toda lógica do sistema de emprestimos
 """
 import pickle
-import PySimpleGUI as sg
+from PySimpleGUI import Popup
 from datetime import datetime
 from operator import itemgetter
 
@@ -35,10 +35,10 @@ def cadastrar(informacoes):
         EMPRESTIMOS.append(emprestimo)
         EMPRESTIMOS.sort(key=itemgetter('data'))
         gravar_dados()
-        sg.Popup("Cadastro realizado com sucesso", button_color=('white', 'springgreen4'))
+        Popup("Cadastro realizado com sucesso", button_color=('white', 'springgreen4'))
         return 0
     except ValueError:
-        sg.Popup("Erro no cadastro", button_color=('white', 'springgreen4'))
+        Popup("Erro no cadastro ou cadastro vazio!", button_color=('white', 'springgreen4'))
         return -1
 
 
@@ -61,18 +61,11 @@ def editar_emprestimo(identificador, novas_informarcoes):
                 emprestimo['data'] = datetime.strptime(data, '%d/%m/%Y').date()
                 emprestimo['item'] = novas_informarcoes[6]
                 gravar_dados()
-                sg.Popup("Atulizado com sucesso", button_color=('white', 'springgreen4'))
+                Popup("Atulizado com sucesso", button_color=('white', 'springgreen4'))
                 return 0
     except:
         return -2
 
-
-def listar_emprestimos():
-    """
-    Esta é para quando se quiser listar todos os emprestimos, ainda, cadastrados no sistema
-    :return: a própria lista de emprestimos
-    """
-    return EMPRESTIMOS
 
 
 def buscar_nome(nome):
@@ -164,6 +157,6 @@ def exlcuir_emprestimo(nome):
         if nome == emprestimo['nome']:
             EMPRESTIMOS.remove(emprestimo)
             gravar_dados()
-            sg.Popup("Apagado com sucesso!", button_color=('white', 'springgreen4'))
+            Popup("Apagado com sucesso!", button_color=('white', 'springgreen4'))
     return 0
 
